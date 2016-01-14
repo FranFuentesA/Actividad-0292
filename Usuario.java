@@ -39,11 +39,12 @@ public class Usuario
         caloriasIngeridas = caloriasIngeridas + (alimentoQueCome.getCalorias() / 100 * gramosDelAlimento);
 
         if (masCalorias != null) {
-            if (masCalorias.getCalorias() >= alimentoQueCome.getCalorias()){
+            if (masCalorias.getCalorias() <= alimentoQueCome.getCalorias()){
                 masCalorias = alimentoQueCome;
-                nombreAlimento =  alimentoQueCome.getNombre();
             }
-
+        }
+        else{
+            masCalorias = alimentoQueCome;
         }
 
     }
@@ -112,7 +113,7 @@ public class Usuario
      */
     public void AlimetoMasCalorico(){
         if (masCalorias != null) {
-            System.out.println("Alimento más calórico ingerido por este usuario hasta el momento: " + nombreAlimento + "(" +  masCalorias + " calorias por cada 100 gramos" + ")");
+            System.out.println("Alimento más calórico ingerido por este usuario hasta el momento: " + masCalorias.getNombre() + "(" +  masCalorias + " calorias por cada 100 gramos" + ")");
         } else {
             System.out.println("No ha consumido ningun alimento"); 
 
