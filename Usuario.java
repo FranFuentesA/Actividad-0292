@@ -11,6 +11,10 @@ public class Usuario
     //calorias totales ingeridas por el usuario
     private float caloriasIngeridas;
 
+    private Alimento masCalorias;
+
+    private String nombreAlimento;
+
     /**
      *Constructor de la clase usuario
      */
@@ -21,6 +25,7 @@ public class Usuario
         carbohidratosIngeridos = 0;
         grasasIngeridas = 0;
         caloriasIngeridas = 0;
+
     }
 
     /**
@@ -32,6 +37,15 @@ public class Usuario
         carbohidratosIngeridos = carbohidratosIngeridos + (alimentoQueCome.getCarbohidratos() / 100 * gramosDelAlimento);
         grasasIngeridas = grasasIngeridas + (alimentoQueCome.getGrasas() / 100 * gramosDelAlimento);
         caloriasIngeridas = caloriasIngeridas + (alimentoQueCome.getCalorias() / 100 * gramosDelAlimento);
+
+        if (masCalorias != null) {
+            if (masCalorias.getCalorias() >= alimentoQueCome.getCalorias()){
+                masCalorias = alimentoQueCome;
+                nombreAlimento =  alimentoQueCome.getNombre();
+            }
+
+        }
+
     }
 
     /**
@@ -75,7 +89,7 @@ public class Usuario
         return caloriasIngeridas;
     }
 
-     /**
+    /**
      * Metodo que compara dos usuarios y muestra cual a consumido mas calorias, o si han consumido las mismas
      */
     public void comparaCalorias (Usuario otroUsuario)
@@ -92,4 +106,16 @@ public class Usuario
             System.out.println(nombreCompleto + " ha consumido las mismas calorias que " + otroUsuario.getNombreCompleto() + "(" + caloriasIngeridas + " frente a " + otroUsuario.getCaloriasIngeridas() + ")");
         }
     }
+
+    /**
+     * 
+     */
+    public void AlimetoMasCalorico(){
+        if (masCalorias != null) {
+            System.out.println("Alimento más calórico ingerido por este usuario hasta el momento: " + nombreAlimento + "(" +  masCalorias + " calorias por cada 100 gramos" + ")");
+        } else {
+            System.out.println("No ha consumido ningun alimento"); 
+
+    }
+}
 }

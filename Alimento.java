@@ -59,7 +59,13 @@ public class Alimento
     {
         return calorias;
     }
-
+    /**
+     * Nos devuelve las calorías que tiene el alimento
+     */
+    public String getNombre() 
+    {
+        return nombre;
+    }
     /**
      * Este método nos muestra los valores de los distintos componentes del alimento 
      */
