@@ -1,5 +1,8 @@
+
+import java.util.ArrayList;
 public class Usuario
 {
+
     //nombre del usuario
     private String nombreCompleto;
     //proteinas  ingeridas por el usuario
@@ -14,6 +17,8 @@ public class Usuario
     private Alimento masCalorias;
 
     private String nombreAlimento;
+    //Coleccion de alimentos ingeridos por usuario
+    private ArrayList<Alimento> listaAlimentos;
 
     /**
      *Constructor de la clase usuario
@@ -25,7 +30,7 @@ public class Usuario
         carbohidratosIngeridos = 0;
         grasasIngeridas = 0;
         caloriasIngeridas = 0;
-
+        listaAlimentos = new ArrayList<Alimento>();
     }
 
     /**
@@ -46,7 +51,7 @@ public class Usuario
         else{
             masCalorias = alimentoQueCome;
         }
-
+        listaAlimentos.add(alimentoQueCome);
     }
 
     /**
@@ -117,6 +122,22 @@ public class Usuario
         } else {
             System.out.println("No ha consumido ningun alimento"); 
 
+        }
     }
-}
+
+    /**
+     * Metodo que permite visualizar los datos de los alimentos que ha ingerido el usuario y mostrar por pantalla indicando su posicion.
+     */
+    public void mostrarDatosNutricionales(int index)
+    {
+
+        if ((index >= 1) && (index <= listaAlimentos.size()))
+        {
+            int cambioPosicion = index - 1;
+            Alimento alimentoIndice = listaAlimentos.get(cambioPosicion);
+            alimentoIndice.muestraDatos();
+        } else {
+            System.out.println("Indice no valido");
+        }
+    }
 }
