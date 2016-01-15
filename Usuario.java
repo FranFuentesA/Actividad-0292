@@ -128,8 +128,7 @@ public class Usuario
     /**
      * Metodo que permite visualizar los datos de los alimentos que ha ingerido el usuario y mostrar por pantalla indicando su posicion.
      */
-    public void mostrarDatosNutricionales(int index)
-    {
+    public void mostrarDatosNutricionales(int index)    {
 
         if ((index >= 1) && (index <= listaAlimentos.size()))
         {
@@ -139,5 +138,27 @@ public class Usuario
         } else {
             System.out.println("Indice no valido");
         }
+    }
+
+    /**
+     * Metodo que permite pasar como parametro el nombre de un alimento e indique si el usuario ha comido ese alimento mas de una vez
+     */
+    public void comprobarAlimento(String nAlimento)
+    {
+        int contador = 0;
+        for (Alimento alimentoX : listaAlimentos){
+            if (alimentoX.getNombre().contains(nAlimento) ){         
+                System.out.println("Ha comido " + nAlimento);  
+                contador++;
+            }
+        }
+        if (contador > 1 ) {
+            System.out.println("Un total de " + contador + " veces");
+        } else if (contador >0 && contador < 2) {
+            System.out.println("Ha consumido el alimento solo una vez");
+        } else if (contador == 0) {
+            System.out.println("No ha consumido alimentos");
+        }
+
     }
 }
